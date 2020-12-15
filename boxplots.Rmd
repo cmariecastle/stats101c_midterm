@@ -1,0 +1,63 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message=FALSE, warning=FALSE}
+source("clean_training_v2.R")
+```
+
+```{r, message=FALSE, warning=FALSE, fig.align='center', fig.asp=1.33}
+library(ggplot2)
+
+# Box plots of each variable (7 per plot) split by class
+for (i in seq(1, ncol(training0) - 2, by = 7)) {
+  # Select 7 columns plus class
+  plot <- training0[, c(names(training0)[seq(i, i + 6)], "class_factor")] %>%
+    # Scale and center numeric variables
+    mutate_if(is.numeric, scale) %>%
+    # Turns 7 columns into 2 columns: variable name and value
+    gather(-class_factor, key = "var", value = "value") %>%
+    ggplot(aes(x = var, y = value, color = class_factor)) +
+      geom_boxplot(outlier.shape = 1) +
+      theme(axis.text.x = element_text(angle = 20)) +
+      coord_cartesian(ylim = c(-10, 10))
+  
+  print(plot)
+}
+
+# Box plots of each variable (7 per plot) split by class
+for (i in seq(1, ncol(training1) - 2, by = 7)) {
+  # Select 7 columns plus class
+  plot <- training1[, c(names(training1)[seq(i, i + 6)], "class_factor")] %>%
+    # Scale and center numeric variables
+    mutate_if(is.numeric, scale) %>%
+    # Turns 7 columns into 2 columns: variable name and value
+    gather(-class_factor, key = "var", value = "value") %>%
+    ggplot(aes(x = var, y = value, color = class_factor)) +
+      geom_boxplot(outlier.shape = 1) +
+      theme(axis.text.x = element_text(angle = 20)) +
+      coord_cartesian(ylim = c(-10, 10))
+  
+  print(plot)
+}
+
+# Box plots of each variable (7 per plot) split by class
+for (i in seq(1, ncol(training2) - 2, by = 7)) {
+  # Select 7 columns plus class
+  plot <- training2[, c(names(training2)[seq(i, i + 6)], "class_factor")] %>%
+    # Scale and center numeric variables
+    mutate_if(is.numeric, scale) %>%
+    # Turns 7 columns into 2 columns: variable name and value
+    gather(-class_factor, key = "var", value = "value") %>%
+    ggplot(aes(x = var, y = value, color = class_factor)) +
+      geom_boxplot(outlier.shape = 1) +
+      theme(axis.text.x = element_text(angle = 20)) +
+      coord_cartesian(ylim = c(-10, 10))
+  
+  print(plot)
+}
+```
