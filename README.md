@@ -1,4 +1,4 @@
-# UCLA Statistics 101C Fall 2020 Midterm Project
+# UCLA Statistics 101C Fall 2020 Midterm Project: Classification of cancer causing genes
 
 ### Instructor: Alan Vazquez
 
